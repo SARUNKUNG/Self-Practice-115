@@ -68,26 +68,22 @@ console.log("Total properties = " + count);
 // ให้ object
 const scores = { math: 80, eng: 72, sci: 90, art: 65 };
 // ใช้ for...in พิมพ์เฉพาะวิชาที่ได้คะแนน มากกว่า 75
-for (let subject in scores) {
+for(subject in scores){
   if (scores[subject] > 75) {
-    console.log(subject + " = " + scores[subject]);
+    console.log(`${subject} : ${scores[subject]} point!!! congratulation`);
   }
 }
-
 
 
 // Q5. Copy Object
 // ให้ object
 const product = { id: 101, name: "Laptop", price: 25000 };
 // ใช้ for...in คัดลอกค่าลงใน object ใหม่ชื่อ productCopy แล้วพิมพ์ออกมา
-let productCopy = {};
-
-for (let key in product) {
-  productCopy[key] = product[key];
+let production = {}
+for(let thing in product){
+  console.log(production[product]);
+  
 }
-
-console.log(productCopy);
-
 
 // Q1. Basic Iteration
 // ให้ array
