@@ -1,106 +1,87 @@
-// // date 19/8/25684
-
-// // function Declaration
-// function multiply1( a , b) {
-//     return a * b
-// }
-
-// // Function expression (using arrow function syntax)
-// const multiply2 = (a,b) => a*b     // ถ้าใส่ปีกกา จะต่องใส่ return
+// Q1. Function Declaration
+// เขียนฟังก์ชัน add ที่รับ 2 ตัวเลขและ return ผลบวก
+function add(a, b) {
+    return a + b;
+}
+console.log("Q1:", add(5, 7)); 
 
 
-// //function expression (using function declaration) 
-// const multiply3 = function(a,b){return a*b}
-
-// console.log(multiply1(4,5));
-// console.log(multiply2(6,2));
-// console.log(multiply3(1,7));
-
-// console.log(typeof(multiply1));
-// const x = multiply1
-// const y = multiply2
-// const z = multiply3
-// console.log(typeof x);
-// console.log(typeof y);
-// console.log(typeof z);
-
-// function doSomeThing(x){
-//     return x(3,5)
-// }
-
-// console.log(doSomeThing(multiply1)); // pass function to another function
+// Q2. Function Expression (Anonymous Function)
+// เขียนฟังก์ชันลบเลข (sub) โดยใช้ function expression
+const sub = function(a, b) {
+    return a - b;
+}
+console.log("Q2:", sub(10, 3)); 
 
 
-// // return function as value of another function
-// function saygoodbye() {
-//     return 'good bye'
-// }
-// function doSomeThing() {
-//     return saygoodbye
-// }
-
-// console.log(doSomeThing()()); //good byr
-
-// //dosomething()[first ()] => saygodbye()[second ()]
-
-// function myFunc(theObject) {
-//     theObject.model = 'A9999'
-// }
-// const product = {model : 'A10001' , price : 199}
-// console.log(product.model); // A1001
-
-// myFunc(product)
-// console.log(product.model); //A9999
-
-// // ------------------------------------------------------------------
-
-// function sum(x,y , ...z){
-//     // return x + y 
-//     // return argrument[0] + argrument[1]
-//     for(argu of arguments){
-//         console.log(argu);
-//     }
-// }
-// console.log(`lenght: ${arguments.length}`);
-// console.log(`x: ${x}`);
-// console.log(`y: ${y}`);
-// console.log(`z: ${z}`);
-
-// function sum2(x, y, ...z) {
-//     let result = 0
-//     for (argu of arguments) {
-//         result += argu;
-//     }
-//     return result
-// }
-// console.log(sum2(2,4,5,6,8));
+// Q3. Arrow Function
+// เขียนฟังก์ชันคูณ (mul) โดยใช้ arrow function
+const mul = (a, b) => a * b;
+console.log("Q3:", mul(4, 6)); 
 
 
-// function greeting(greet = 'hello' , whom = 'guest' , qoute = 'how are you ?') {
-//     return `${greet} ${whom} ${qoute}`
-// }
-// console.log(greeting('hi'));  //hi guest how are you
-// console.log(greeting('good morning' , 'guy' , 'greate')); //good morning
-// console.log(greeting(undefined , null , 'find')); // hello null find
-// console.log(greeting()); // hello guest how are you
+// Q4. Pass Function as Argument
+// เขียนฟังก์ชัน doOperation ที่รับฟังก์ชันคำนวณ (เช่น add, sub, mul) และเลข 2 ตัว
+function doOperation(func, x, y) {
+    return func(x, y);
+}
+console.log("Q4:", doOperation(add, 3, 8)); 
+console.log("Q4:", doOperation(mul, 3, 8)); 
 
 
-//  function sum(num1, num2, num3) {
-//  return num1 + num2 + num3
-//  }
-//  let nums = [5 , 15 , 20 ]
-//  //spread parameter
-//  console.log(sum(...nums)) //40
-
-
- function getFreqOfWords(sentence) {
-    let word = sentence.toLowerCase().split(' ')
-    let duplicate = 0
-    for (const word of sentence) {
-        
+// Q5. Return Function
+// เขียนฟังก์ชัน greeting ที่ return ฟังก์ชันอีกตัว
+function greeting() {
+    return function(name) {
+        return `Hello, ${name}`;
     }
- }
- 
+}
+console.log("Q5:", greeting()("Somchai")); 
 
- console.log(getFreqOfWords('Hello how are You todays'));
- 
+
+// Q6. Pass Object to Function
+// เขียนฟังก์ชัน updatePrice ที่แก้ไข property ใน object
+function updatePrice(product, newPrice) {
+    product.price = newPrice;
+}
+let product = { model: "A100", price: 200 };
+updatePrice(product, 500);
+console.log("Q6:", product); 
+
+
+// Q7. Arguments Object
+// เขียนฟังก์ชัน sumAll ที่รับจำนวน arguments ไม่จำกัดและหาผลรวม
+function sumAll() {
+    let total = 0;
+    for (let arg of arguments) {
+        total += arg;
+    }
+    return total;
+}
+console.log("Q7:", sumAll(1,2,3,4,5)); // 15
+
+
+// Q8. Rest Parameter
+// เขียนฟังก์ชัน multiplyAll ที่ใช้ ...nums และคืนผลคูณทั้งหมด
+function multiplyAll(...nums) {
+    return nums.reduce((acc, n) => acc * n, 1);
+}
+console.log("Q8:", multiplyAll(2,3,4)); 
+
+// Q9. Default Parameters
+// เขียนฟังก์ชัน sayHello โดยมี default value เป็น "Hello Guest"
+function sayHello(name = "Guest") {
+    return `Hello ${name}`;
+}
+console.log("Q9:", sayHello()); 
+console.log("Q9:", sayHello("Suda")); 
+
+
+// Q10. Spread Operator
+// เขียนฟังก์ชัน findMax ที่หาค่าสูงสุด โดยใช้ spread operator
+function findMax(a, b, c) {
+    return Math.max(a, b, c);
+}
+let numbers = [10, 25, 7];
+console.log("Q10:", findMax(...numbers)); 
+
